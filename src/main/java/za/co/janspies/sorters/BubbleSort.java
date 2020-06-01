@@ -8,6 +8,8 @@ import za.co.janspies.SortingFactory;
 import za.co.janspies.model.DataModel;
 
 /**
+ * Bubble Sort is the simplest sorting algorithm that works by repeatedly
+ * swapping the adjacent elements if they are in wrong order.
  *
  * @author jvanrooyen
  *

@@ -8,6 +8,8 @@ import za.co.janspies.SortingFactory;
 import za.co.janspies.model.DataModel;
 
 /**
+ * Insertion sort is a simple sorting algorithm that works the way we sort
+ * playing cards in our hands
  *
  * @author jvanrooyen
  *

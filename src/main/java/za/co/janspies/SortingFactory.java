@@ -20,8 +20,14 @@ import za.co.janspies.sorters.RadixSort;
 import za.co.janspies.sorters.RecursiveBubbleSort;
 import za.co.janspies.sorters.RecursiveInsertionSort;
 import za.co.janspies.sorters.SelectionSort;
+import za.co.janspies.sorters.ShellSort;
 import za.co.janspies.sorters.Shuffler;
 
+/**
+ *
+ * @author jvanrooyen
+ *
+ */
 public class SortingFactory {
 	private static final Logger LOG = Logger.getLogger(SortingFactory.class);
 
@@ -35,7 +41,7 @@ public class SortingFactory {
 	private static final Class<?>[] SORTING_CLASSES = new Class[] { BinaryInsertionSort.class, BubbleSort.class,
 			CycleSort.class, HeapSort.class, InsertionSort.class, IterativeMergeSort.class, MergeSort.class,
 			PancakeSort.class, QuickSort.class, RadixSort.class, RecursiveBubbleSort.class,
-			RecursiveInsertionSort.class, SelectionSort.class, Shuffler.class };
+			RecursiveInsertionSort.class, SelectionSort.class, ShellSort.class, Shuffler.class };
 
 	private SortingFactory() {
 	}

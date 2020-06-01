@@ -8,6 +8,9 @@ import za.co.janspies.SortingFactory;
 import za.co.janspies.model.DataModel;
 
 /**
+ * Unlike a traditional sorting algorithm, which attempts to sort with the
+ * fewest comparisons possible, the goal is to sort the sequence in as few
+ * reversals as possible.
  *
  * @author jvanrooyen
  *

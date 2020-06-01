@@ -8,6 +8,11 @@ import za.co.janspies.SortingFactory;
 import za.co.janspies.model.DataModel;
 
 /**
+ * We can use binary search to reduce the number of comparisons in normal
+ * insertion sort. Binary Insertion Sort uses binary search to find the proper
+ * location to insert the selected item at each iteration. In normal insertion
+ * sort, it takes O(n^2) comparisons(at nth iteration) in worst case. We can
+ * reduce it to O(log n) by using binary search.
  *
  * @author jvanrooyen
  *
