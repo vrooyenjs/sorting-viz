@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import za.co.janspies.sorters.BinaryInsertionSort;
 import za.co.janspies.sorters.BubbleSort;
+import za.co.janspies.sorters.CycleSort;
 import za.co.janspies.sorters.HeapSort;
 import za.co.janspies.sorters.InsertionSort;
 import za.co.janspies.sorters.IterativeMergeSort;
@@ -28,9 +29,9 @@ public class SortingFactory {
 	public static final int TYPE_SHUFFLER = 0;
 	public static final int TYPE_BUBBLE_SORT = 1;
 
-	private static final Class[] SORTING_CLASSES = new Class[] { SelectionSort.class, BubbleSort.class, QuickSort.class,
-			RecursiveBubbleSort.class, InsertionSort.class, HeapSort.class, PancakeSort.class, IterativeMergeSort.class,
-			BinaryInsertionSort.class, Shuffler.class };
+	private static final Class<?>[] SORTING_CLASSES = new Class[] { BinaryInsertionSort.class, BubbleSort.class,
+			CycleSort.class, HeapSort.class, InsertionSort.class, IterativeMergeSort.class, PancakeSort.class,
+			QuickSort.class, RecursiveBubbleSort.class, SelectionSort.class, Shuffler.class };
 
 	private SortingFactory() {
 	}
@@ -62,7 +63,7 @@ public class SortingFactory {
 			throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
 			InvocationTargetException, InstantiationException {
 
-		for (final Class clazz : SORTING_CLASSES) {
+		for (final Class<?> clazz : SORTING_CLASSES) {
 			final Method method = clazz.getMethod("getName", null);
 			if (StringUtils.equalsIgnoreCase(String.valueOf(method.invoke(null)), type)) {
 				final Constructor<?> cons = clazz.getConstructor(GraphJPanel.class);
@@ -77,7 +78,7 @@ public class SortingFactory {
 		final String[] arr = new String[SORTING_CLASSES.length];
 		try {
 			int i = 0;
-			for (final Class clazz : SORTING_CLASSES) {
+			for (final Class<?> clazz : SORTING_CLASSES) {
 				final Method method = clazz.getMethod("getName", null);
 				arr[i++] = String.valueOf(method.invoke(null));
 			}
