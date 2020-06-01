@@ -17,7 +17,8 @@ public class BitonicSort implements Sorter {
 
 	private final GraphJPanel graphJPanel;
 	private final DataModel dataModel;
-	int count = 0;
+	int repaintCount = 0;
+	private static final boolean UP = true;
 
 	public BitonicSort(final GraphJPanel graphJPanel) {
 		LOG.info("Starting up a BitonicSort...");
@@ -30,19 +31,17 @@ public class BitonicSort implements Sorter {
 		this.sort();
 	}
 
-	/**
-	 * Iterative merge sort function to sort arr[0...n-1]
-	 */
 	public void sort() {
-		this.sort(1);
+		this.sort(this.dataModel.getLength(), UP);
 	}
 
 	/**
 	 *
-	 * @param up
+	 * @param n
+	 * @param dir
 	 */
-	void sort(final int up) {
-		this.bitonicSort(0, this.dataModel.getLength(), up);
+	public void sort(final int n, final boolean up) {
+		this.bitonicSort(0, n, up);
 	}
 
 	/**
@@ -51,22 +50,15 @@ public class BitonicSort implements Sorter {
 	 * them in the same order
 	 *
 	 * @param low
-	 * @param cnt
+	 * @param count
 	 * @param dir
 	 */
-	private void bitonicSort(final int low, final int cnt, final int dir) {
-		if (cnt > 1) {
-			final int k = cnt / 2;
-
-			// sort in ascending order since dir here is 1
-			this.bitonicSort(low, k, 1);
-
-			// sort in descending order since dir here is 0
-			this.bitonicSort(low + k, k, 0);
-
-			// Will merge whole sequence in ascending order
-			// since dir=1.
-			this.bitonicMerge(low, cnt, dir);
+	private void bitonicSort(final int lo, final int n, final boolean dir) {
+		if (n > 1) {
+			final int m = n / 2;
+			this.bitonicSort(lo, m, !dir);
+			this.bitonicSort(lo + m, n - m, dir);
+			this.bitonicMerge(lo, n, dir);
 		}
 	}
 
@@ -77,19 +69,31 @@ public class BitonicSort implements Sorter {
 	 * sorted.
 	 *
 	 * @param low
-	 * @param cnt
+	 * @param count
 	 * @param dir
 	 */
-	private void bitonicMerge(final int low, final int cnt, final int dir) {
-		if (cnt > 1) {
-			final int k = cnt / 2;
-			for (int i = low; i < (low + k); i++) {
-				this.compAndSwap(i, i + k, dir);
+	private void bitonicMerge(final int lo, final int n, final boolean dir) {
+		if (n > 1) {
+			final int m = this.greatestPowerOfTwoLessThan(n);
+			for (int i = lo; i < ((lo + n) - m); i++) {
+				this.compAndSwap(i, i + m, dir);
 			}
-			this.bitonicMerge(low, k, dir);
-			this.bitonicMerge(low + k, k, dir);
+			this.bitonicMerge(lo, m, dir);
+			this.bitonicMerge(lo + m, n - m, dir);
 		}
+	}
 
+	/**
+	 *
+	 * @param n
+	 * @return
+	 */
+	private int greatestPowerOfTwoLessThan(final int n) {
+		int k = 1;
+		while ((k > 0) && (k < n)) {
+			k = k << 1;
+		}
+		return k >>> 1;
 	}
 
 	/**
@@ -101,11 +105,10 @@ public class BitonicSort implements Sorter {
 	 * @param j
 	 * @param dir
 	 */
-	private void compAndSwap(final int i, final int j, final int dir) {
-		if ((this.dataModel.gt(i, j) && (dir == 1)) || (this.dataModel.lt(i, j) && (dir == 0))) {
-			// Swapping elements
+	private void compAndSwap(final int i, final int j, final boolean dir) {
+		if (dir == this.dataModel.gt(i, j)) {
 			this.dataModel.swap(i, j);
-			this.repaint(this.count++);
+			this.repaint(this.repaintCount++);
 		}
 	}
 
