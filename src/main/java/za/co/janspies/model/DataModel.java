@@ -75,6 +75,20 @@ public class DataModel {
 
 	/**
 	 *
+	 * @return
+	 */
+	public int getMax() {
+		int mx = this.data[0];
+		for (int i = 1; i < this.getLength(); i++) {
+			if (this.data[i] > mx) {
+				mx = this.data[i];
+			}
+		}
+		return mx;
+	}
+
+	/**
+	 *
 	 * @param srcPos
 	 * @param destPos
 	 * @param length
