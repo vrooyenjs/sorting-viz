@@ -80,39 +80,49 @@ public class TimSort implements Sorter {
 	/**
 	 * merge function merges the sorted runs
 	 *
-	 * @param l
-	 * @param m
-	 * @param r
+	 * @param left
+	 * @param mid
+	 * @param right
 	 */
-	private void merge(final int l, final int m, final int r) {
+	private void merge(final int left, int mid, int right) {
 		// original array is broken in two parts
 		// left and right array
-		final int len1 = (m - l) + 1;
-		final int len2 = r - m;
-		final int[] left = new int[len1];
-		final int[] right = new int[len2];
+		final int len1 = (mid - left) + 1;
+
+		if (right >= this.dataModel.getLength()) {
+			right = this.dataModel.getLength() - 1;
+		}
+
+		if (mid >= this.dataModel.getLength()) {
+			mid = this.dataModel.getLength() - 1;
+		}
+		final int len2 = right - mid;
+		final int[] leftArr = new int[len1];
+		final int[] rightArr = new int[len2];
 
 		for (int x = 0; x < len1; x++) {
-			left[x] = this.dataModel.get(l + x);
+			if ((left + x) < this.dataModel.getLength()) {
+				leftArr[x] = this.dataModel.get(left + x);
+			}
 		}
 
 		for (int x = 0; x < len2; x++) {
-			right[x] = this.dataModel.get(m + 1 + x);
+			rightArr[x] = this.dataModel.get(mid + 1 + x);
 		}
 
 		int i = 0;
 		int j = 0;
-		int k = l;
+		int k = left;
 
 		// after comparing, we merge those two array
 		// in larger sub array
 		while ((i < len1) && (j < len2)) {
-			if (left[i] <= right[j]) {
-				this.dataModel.set(k, left[i]);
+			if (leftArr[i] <= rightArr[j]) {
+				this.dataModel.set(k, leftArr[i]);
 				this.repaint(this.count++);
 				i++;
 			} else {
-				this.dataModel.set(k, right[j]);
+				this.dataModel.set(k, rightArr[j]);
 				this.repaint(this.count++);
 				j++;
 			}
@@ -121,15 +131,17 @@ public class TimSort implements Sorter {
 
 		// copy remaining elements of left, if any
 		while (i < len1) {
-			this.dataModel.set(k, left[i]);
-			this.repaint(this.count++);
+			if (k < this.dataModel.getLength()) {
+				this.dataModel.set(k, leftArr[i]);
+				this.repaint(this.count++);
+			}
 			k++;
 			i++;
 		}
 
 		// copy remaining element of right, if any
 		while (j < len2) {
-			this.dataModel.set(k, right[j]);
+			this.dataModel.set(k, rightArr[j]);
 			this.repaint(this.count++);
 			k++;
 			j++;
