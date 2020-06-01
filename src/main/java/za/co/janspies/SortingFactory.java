@@ -9,12 +9,14 @@ import org.apache.log4j.Logger;
 
 import za.co.janspies.sorters.BinaryInsertionSort;
 import za.co.janspies.sorters.BubbleSort;
+import za.co.janspies.sorters.CombSort;
 import za.co.janspies.sorters.CycleSort;
 import za.co.janspies.sorters.HeapSort;
 import za.co.janspies.sorters.InsertionSort;
 import za.co.janspies.sorters.IterativeMergeSort;
 import za.co.janspies.sorters.MergeSort;
 import za.co.janspies.sorters.PancakeSort;
+import za.co.janspies.sorters.PigeonholeSort;
 import za.co.janspies.sorters.QuickSort;
 import za.co.janspies.sorters.RadixSort;
 import za.co.janspies.sorters.RecursiveBubbleSort;
@@ -22,6 +24,7 @@ import za.co.janspies.sorters.RecursiveInsertionSort;
 import za.co.janspies.sorters.SelectionSort;
 import za.co.janspies.sorters.ShellSort;
 import za.co.janspies.sorters.Shuffler;
+import za.co.janspies.sorters.TimSort;
 
 /**
  *
@@ -39,9 +42,10 @@ public class SortingFactory {
 	public static final int TYPE_BUBBLE_SORT = 1;
 
 	private static final Class<?>[] SORTING_CLASSES = new Class[] { BinaryInsertionSort.class, BubbleSort.class,
-			CycleSort.class, HeapSort.class, InsertionSort.class, IterativeMergeSort.class, MergeSort.class,
-			PancakeSort.class, QuickSort.class, RadixSort.class, RecursiveBubbleSort.class,
-			RecursiveInsertionSort.class, SelectionSort.class, ShellSort.class, Shuffler.class };
+			CombSort.class, CycleSort.class, HeapSort.class, InsertionSort.class, IterativeMergeSort.class,
+			MergeSort.class, PancakeSort.class, PigeonholeSort.class, QuickSort.class, RadixSort.class,
+			RecursiveBubbleSort.class, RecursiveInsertionSort.class, SelectionSort.class, ShellSort.class,
+			Shuffler.class, TimSort.class };
 
 	private SortingFactory() {
 	}

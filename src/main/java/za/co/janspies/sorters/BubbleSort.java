@@ -65,7 +65,7 @@ public class BubbleSort implements Sorter {
 	public void repaint(final int count) {
 		this.graphJPanel.repaint();
 		try {
-			if ((count % 10) == 0) {
+			if ((count % 20) == 0) {
 				Thread.sleep(SortingFactory.THREAD_SPEED);
 			}
 		} catch (final InterruptedException e) {
