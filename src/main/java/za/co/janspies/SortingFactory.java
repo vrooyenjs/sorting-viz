@@ -16,6 +16,7 @@ import za.co.janspies.sorters.IterativeMergeSort;
 import za.co.janspies.sorters.PancakeSort;
 import za.co.janspies.sorters.QuickSort;
 import za.co.janspies.sorters.RecursiveBubbleSort;
+import za.co.janspies.sorters.RecursiveInsertionSort;
 import za.co.janspies.sorters.SelectionSort;
 import za.co.janspies.sorters.Shuffler;
 
@@ -31,7 +32,8 @@ public class SortingFactory {
 
 	private static final Class<?>[] SORTING_CLASSES = new Class[] { BinaryInsertionSort.class, BubbleSort.class,
 			CycleSort.class, HeapSort.class, InsertionSort.class, IterativeMergeSort.class, PancakeSort.class,
-			QuickSort.class, RecursiveBubbleSort.class, SelectionSort.class, Shuffler.class };
+			QuickSort.class, RecursiveBubbleSort.class, RecursiveInsertionSort.class, SelectionSort.class,
+			Shuffler.class };
 
 	private SortingFactory() {
 	}
