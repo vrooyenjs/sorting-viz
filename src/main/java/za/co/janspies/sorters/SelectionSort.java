@@ -47,7 +47,7 @@ public class SelectionSort implements Sorter {
 			int minIndex = i;
 			for (int j = i + 1; j < this.dataModel.getLength(); j++) {
 				count++;
-				if (this.dataModel.get(j) < this.dataModel.get(minIndex)) {
+				if (this.dataModel.lt(j, minIndex)) {
 					minIndex = j;
 				}
 			}

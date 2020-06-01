@@ -8,13 +8,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import za.co.janspies.sorters.BinaryInsertionSort;
+import za.co.janspies.sorters.BitonicSort;
 import za.co.janspies.sorters.BubbleSort;
+import za.co.janspies.sorters.CocktailSort;
 import za.co.janspies.sorters.CombSort;
 import za.co.janspies.sorters.CycleSort;
 import za.co.janspies.sorters.HeapSort;
 import za.co.janspies.sorters.InsertionSort;
 import za.co.janspies.sorters.IterativeMergeSort;
 import za.co.janspies.sorters.MergeSort;
+import za.co.janspies.sorters.OddEvenSort;
 import za.co.janspies.sorters.PancakeSort;
 import za.co.janspies.sorters.PigeonholeSort;
 import za.co.janspies.sorters.QuickSort;
@@ -41,11 +44,11 @@ public class SortingFactory {
 	public static final int TYPE_SHUFFLER = 0;
 	public static final int TYPE_BUBBLE_SORT = 1;
 
-	private static final Class<?>[] SORTING_CLASSES = new Class[] { BinaryInsertionSort.class, BubbleSort.class,
-			CombSort.class, CycleSort.class, HeapSort.class, InsertionSort.class, IterativeMergeSort.class,
-			MergeSort.class, PancakeSort.class, PigeonholeSort.class, QuickSort.class, RadixSort.class,
-			RecursiveBubbleSort.class, RecursiveInsertionSort.class, SelectionSort.class, ShellSort.class,
-			Shuffler.class, TimSort.class };
+	private static final Class<?>[] SORTING_CLASSES = new Class[] { BinaryInsertionSort.class, BitonicSort.class,
+			BubbleSort.class, CocktailSort.class, CombSort.class, CycleSort.class, HeapSort.class, InsertionSort.class,
+			IterativeMergeSort.class, OddEvenSort.class, MergeSort.class, PancakeSort.class, PigeonholeSort.class,
+			QuickSort.class, RadixSort.class, RecursiveBubbleSort.class, RecursiveInsertionSort.class,
+			SelectionSort.class, ShellSort.class, Shuffler.class, TimSort.class };
 
 	private SortingFactory() {
 	}

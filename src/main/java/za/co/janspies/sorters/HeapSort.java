@@ -71,12 +71,12 @@ public class HeapSort implements Sorter {
 		final int r = (2 * i) + 2; // right = 2*i + 2
 
 		// If left child is larger than root
-		if ((l < n) && (this.dataModel.get(l) > this.dataModel.get(largest))) {
+		if ((l < n) && (this.dataModel.gt(l, largest))) {
 			largest = l;
 		}
 
 		// If right child is larger than largest so far
-		if ((r < n) && (this.dataModel.get(r) > this.dataModel.get(largest))) {
+		if ((r < n) && (this.dataModel.gt(r, largest))) {
 			largest = r;
 		}
 

@@ -25,7 +25,12 @@ public class CombSort implements Sorter {
 		this.sort();
 	}
 
-	// To find gap between elements
+	/**
+	 * To find gap between elements
+	 *
+	 * @param gap
+	 * @return
+	 */
 	int getNextGap(int gap) {
 		// Shrink gap by Shrink factor
 		gap = (gap * 10) / 13;
@@ -60,7 +65,7 @@ public class CombSort implements Sorter {
 
 			// Compare all elements with current gap
 			for (int i = 0; i < (n - gap); i++) {
-				if (this.dataModel.get(i) > this.dataModel.get(i + gap)) {
+				if (this.dataModel.gt(i, i + gap)) {
 					// Swap arr[i] and arr[i+gap]
 					this.dataModel.swap(i, i + gap);
 					this.repaint(this.count++);

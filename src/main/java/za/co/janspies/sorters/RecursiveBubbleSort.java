@@ -46,7 +46,7 @@ public class RecursiveBubbleSort implements Sorter {
 		// this pass, the largest element
 		// is moved (or bubbled) to end.
 		for (int i = 0; i < (n - 1); i++) {
-			if (this.dataModel.get(i) > this.dataModel.get(i + 1)) {
+			if (this.dataModel.gt(i, i + 1)) {
 				this.dataModel.swap(i, i + 1);
 				this.repaint(this.count++);
 			}

@@ -90,7 +90,7 @@ public class PancakeSort implements Sorter {
 	private int findMax(final int n) {
 		int mi, i;
 		for (mi = 0, i = 0; i < n; ++i) {
-			if (this.dataModel.get(i) > this.dataModel.get(mi)) {
+			if (this.dataModel.gt(i, mi)) {
 				mi = i;
 			}
 		}

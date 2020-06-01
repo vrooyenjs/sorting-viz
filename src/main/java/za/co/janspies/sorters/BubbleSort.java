@@ -40,7 +40,8 @@ public class BubbleSort implements Sorter {
 		for (int i = 0; i < (this.dataModel.getLength() - 1); i++) {
 			boolean swapped = false;
 			for (int j = 0; j < (this.dataModel.getLength() - 1); j++) {
-				if (this.dataModel.get(j) > this.dataModel.get(j + 1)) {
+
+				if (this.dataModel.gt(j, j + 1)) {
 					this.dataModel.swap(j, j + 1);
 					this.repaint(this.count++);
 

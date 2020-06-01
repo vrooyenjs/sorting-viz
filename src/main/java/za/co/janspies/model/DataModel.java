@@ -42,11 +42,51 @@ public class DataModel {
 	 * @param fromIndex
 	 * @param toIndex
 	 */
-	public synchronized void swap(final int fromIndex, final int toIndex) {
+	public void swap(final int fromIndex, final int toIndex) {
 		this.getStatistics().getSwaps().getAndIncrement();
 		final int tmp = this.get(fromIndex);
 		this.set(fromIndex, this.get(toIndex));
 		this.set(toIndex, tmp);
+	}
+
+	/**
+	 *
+	 * @param index1
+	 * @param index2
+	 * @return
+	 */
+	public boolean lt(final int index1, final int index2) {
+		return (this.get(index1) < this.get(index2));
+	}
+
+	/**
+	 *
+	 * @param index1
+	 * @param index2
+	 * @return
+	 */
+	public boolean ge(final int index1, final int index2) {
+		return (this.get(index1) >= this.get(index2));
+	}
+
+	/**
+	 *
+	 * @param index1
+	 * @param index2
+	 * @return
+	 */
+	public boolean gt(final int index1, final int index2) {
+		return (this.get(index1) > this.get(index2));
+	}
+
+	/**
+	 *
+	 * @param index1
+	 * @param index2
+	 * @return
+	 */
+	public boolean le(final int index1, final int index2) {
+		return (this.get(index1) <= this.get(index2));
 	}
 
 	/**
