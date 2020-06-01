@@ -7,8 +7,13 @@ import za.co.janspies.Sorter;
 import za.co.janspies.SortingFactory;
 import za.co.janspies.model.DataModel;
 
+/**
+ *
+ * @author jvanrooyen
+ *
+ */
 public class BinaryInsertionSort implements Sorter {
-	private static final Logger LOG = Logger.getLogger(HeapSort.class);
+	private static final Logger LOG = Logger.getLogger(BinaryInsertionSort.class);
 
 	private final GraphJPanel graphJPanel;
 	private final DataModel dataModel;
@@ -22,25 +27,25 @@ public class BinaryInsertionSort implements Sorter {
 	}
 
 	public void run() {
-		sort();
+		this.sort();
 	}
 
 	/**
 	 * The main function that sorts given array using flip operations
 	 */
 	public void sort() {
-		for (int i = 1; i < dataModel.getLength(); i++) {
-			int x = dataModel.get(i);
+		for (int i = 1; i < this.dataModel.getLength(); i++) {
+			final int x = this.dataModel.get(i);
 
 			// Find location to insert using binary search
-			int j = Math.abs(dataModel.binarySearch(0, i, x) + 1);
+			final int j = Math.abs(this.dataModel.binarySearch(0, i, x) + 1);
 
 			// Shifting array to one location right
-			dataModel.arrayCopy(j, j + 1, i - j);
+			this.dataModel.arrayCopy(j, j + 1, i - j);
 
 			// Placing element at its correct location
-			dataModel.set(j, x);
-			repaint(count++);
+			this.dataModel.set(j, x);
+			this.repaint(this.count++);
 		}
 	}
 

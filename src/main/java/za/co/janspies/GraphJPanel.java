@@ -11,52 +11,53 @@ import lombok.Getter;
 import lombok.Setter;
 import za.co.janspies.model.DataModel;
 
+/**
+ *
+ * @author jvanrooyen
+ *
+ */
 @Getter
 @Setter
 public class GraphJPanel extends JPanel {
-    private static final Logger LOG = Logger.getLogger(GraphJPanel.class);
+	private static final Logger LOG = Logger.getLogger(GraphJPanel.class);
 
-    public static final double PANEL_WIDTH = 1695.0;
-    public static final double PANEL_HEIGHT = 440.0;
+	public static final double PANEL_WIDTH = 1695.0;
+	public static final double PANEL_HEIGHT = 440.0;
+	private static final double BASE_HEIGHT_UNIT = (440.0 / 1695.0);
+	private DataModel dataModel;
 
-    // private static final double BASE_HEIGHT_UNIT = PANEL_HEIGHT / PANEL_HEIGHT;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 2208266558865886687L;
 
-    private int barWidth;
+	/**
+	 * Create the panel.
+	 *
+	 */
+	public GraphJPanel() {
+		this.dataModel = new DataModel((int) PANEL_WIDTH);
+		LOG.info("WIDTH: " + this.dataModel.getLength());
+		this.setBackground(Color.WHITE);
+	}
 
-    private DataModel dataModel;
+	@Override
+	protected void paintComponent(final Graphics g) {
+		super.paintComponent(g);
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 2208266558865886687L;
+		int x = 10;
 
-    /**
-     * Create the panel.
-     *
-     */
-    public GraphJPanel() {
-        this.dataModel = new DataModel((int) PANEL_WIDTH);
-        LOG.info("WIDTH: " + this.dataModel.getLength());
-        this.setBackground(Color.WHITE);
-    }
+		for (int i = 0; i < this.dataModel.getLength(); i++) {
+			final double hieght = BASE_HEIGHT_UNIT * this.dataModel.get(i);
 
-    @Override
-    protected void paintComponent(final Graphics g) {
-        super.paintComponent(g);
+			g.setColor(new Color(200, 200, (int) Math.floor(((255.0 / 1695.0)) * this.dataModel.get(i))));
+			g.drawLine(x, (int) PANEL_HEIGHT, x, (int) (PANEL_HEIGHT - hieght));
+			x += 1;
+		}
+	}
 
-        int x = 10;
-        final double BASE_HEIGHT_UNIT = (440.0 / 1695.0);
-        for (int i = 0; i < this.dataModel.getLength(); i++) {
-            final double hieght = BASE_HEIGHT_UNIT * this.dataModel.get(i);
-
-            g.setColor(new Color(200, 200, (int) Math.floor(((255.0 / 1695.0)) * this.dataModel.get(i))));
-            g.drawLine(x, (int) PANEL_HEIGHT, x, (int) (PANEL_HEIGHT - hieght));
-            x += 1;
-        }
-    }
-
-    void reset() {
-        this.dataModel = new DataModel((int) PANEL_WIDTH);
-        this.repaint();
-    }
+	void reset() {
+		this.dataModel = new DataModel((int) PANEL_WIDTH);
+		this.repaint();
+	}
 }

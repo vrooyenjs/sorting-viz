@@ -7,6 +7,11 @@ import za.co.janspies.Sorter;
 import za.co.janspies.SortingFactory;
 import za.co.janspies.model.DataModel;
 
+/**
+ *
+ * @author jvanrooyen
+ *
+ */
 public class CycleSort implements Sorter {
 	private static final Logger LOG = Logger.getLogger(CycleSort.class);
 

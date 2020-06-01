@@ -1,9 +1,14 @@
 package za.co.janspies;
 
+/**
+ *
+ * @author jvanrooyen
+ *
+ */
 public interface Sorter extends Runnable {
-    boolean stopNow();
+	boolean stopNow();
 
-    void sort();
+	void sort();
 
-    void repaint(int count);
+	void repaint(int count);
 }

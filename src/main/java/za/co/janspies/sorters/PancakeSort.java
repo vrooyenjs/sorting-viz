@@ -7,8 +7,13 @@ import za.co.janspies.Sorter;
 import za.co.janspies.SortingFactory;
 import za.co.janspies.model.DataModel;
 
+/**
+ *
+ * @author jvanrooyen
+ *
+ */
 public class PancakeSort implements Sorter {
-	private static final Logger LOG = Logger.getLogger(HeapSort.class);
+	private static final Logger LOG = Logger.getLogger(PancakeSort.class);
 
 	private final GraphJPanel graphJPanel;
 	private final DataModel dataModel;
@@ -22,7 +27,7 @@ public class PancakeSort implements Sorter {
 	}
 
 	public void run() {
-		sort();
+		this.sort();
 	}
 
 	/**
@@ -32,27 +37,27 @@ public class PancakeSort implements Sorter {
 		// Start from the complete
 		// array and one by one
 		// reduce current size by one
-		for (int curr_size = dataModel.getLength(); curr_size > 1; --curr_size) {
+		for (int curr_size = this.dataModel.getLength(); curr_size > 1; --curr_size) {
 
 			// Find index of the
 			// maximum element in
 			// arr[0..curr_size-1]
-			int mi = findMax(curr_size);
+			final int mi = this.findMax(curr_size);
 
 			// Move the maximum element
 			// to end of current array
 			// if it's not already at
 			// the end
-			if (mi != curr_size - 1) {
+			if (mi != (curr_size - 1)) {
 				// To move at the end,
 				// first move maximum
 				// number to beginning
-				flip(mi);
+				this.flip(mi);
 
 				// Now move the maximum
 				// number to end by
 				// reversing current array
-				flip(curr_size - 1);
+				this.flip(curr_size - 1);
 			}
 		}
 
@@ -60,14 +65,14 @@ public class PancakeSort implements Sorter {
 
 	/**
 	 * Reverses arr[0..i]
-	 * 
+	 *
 	 * @param mi
 	 */
 	private void flip(int i) {
 		int start = 0;
 		while (start < i) {
-			dataModel.swap(start, i);
-			repaint(count++);
+			this.dataModel.swap(start, i);
+			this.repaint(this.count++);
 			start++;
 			i--;
 		}
@@ -75,15 +80,17 @@ public class PancakeSort implements Sorter {
 
 	/**
 	 * Returns index of the maximum element in arr[0..n-1]
-	 * 
+	 *
 	 * @param curr_size
 	 * @return
 	 */
-	private int findMax(int n) {
+	private int findMax(final int n) {
 		int mi, i;
-		for (mi = 0, i = 0; i < n; ++i)
-			if (dataModel.get(i) > dataModel.get(mi))
+		for (mi = 0, i = 0; i < n; ++i) {
+			if (this.dataModel.get(i) > this.dataModel.get(mi)) {
 				mi = i;
+			}
+		}
 		return mi;
 	}
 

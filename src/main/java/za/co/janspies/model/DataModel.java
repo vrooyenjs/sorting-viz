@@ -1,18 +1,18 @@
 package za.co.janspies.model;
 
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicLong;
-
-import org.apache.log4j.Logger;
 
 import lombok.Getter;
 import lombok.Setter;
-import za.co.janspies.sorters.HeapSort;
 
+/**
+ *
+ * @author jvanrooyen
+ *
+ */
 @Getter
 @Setter
 public class DataModel {
-	private static final Logger LOG = Logger.getLogger(DataModel.class);
 
 	private int[] data;
 	private int length;
@@ -50,18 +50,18 @@ public class DataModel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param i
 	 * @param x
 	 * @return
 	 */
-	public int binarySearch(int fromIndex, int toIndex, int key) {
+	public int binarySearch(final int fromIndex, final int toIndex, final int key) {
 
 		int low = fromIndex;
 		int high = toIndex - 1;
 		while (low <= high) {
-			int mid = (low + high) >>> 1;
-			long midVal = get(mid);
+			final int mid = (low + high) >>> 1;
+			final long midVal = this.get(mid);
 			if (midVal < key) {
 				low = mid + 1;
 			} else if (midVal > key) {
@@ -74,13 +74,13 @@ public class DataModel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param srcPos
 	 * @param destPos
 	 * @param length
 	 */
-	public void arrayCopy(int srcPos, int destPos, int length) {
-		System.arraycopy(data, srcPos, data, destPos, length);
+	public void arrayCopy(final int srcPos, final int destPos, final int length) {
+		System.arraycopy(this.data, srcPos, this.data, destPos, length);
 	}
 
 	/**
